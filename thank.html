@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>春分之礼 - 库洛米的道歉信</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffd1dc, #e0b0ff, #d8bfd8);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            font-family: 'Ma Shan Zheng', cursive, 'Comic Sans MS';
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 50px;
+        }
+        
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        
+        .kuromi-header {
+            position: relative;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.7);
+            border-bottom: 10px solid #e0b0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .kuromi-logo {
+            position: absolute;
+            width: 130px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {transform: translateY(0px) rotate(0deg);}
+            50% {transform: translateY(-20px) rotate(5deg);}
+            100% {transform: translateY(0px) rotate(0deg);}
+        }
+        
+        .kuromi-header h1 {
+            color: #8B008B;
+            font-size: 48px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            background: linear-gradient(to right, #FF69B4, #9370DB, #FF1493);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            border: 5px dotted #e0b0ff;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px dashed #FF69B4;
+            border-radius: 40px;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .kuromi-corner {
+            position: absolute;
+            width: 120px;
+            z-index: 5;
+        }
+        
+        .top-left {
+            top: -50px;
+            left: -40px;
+            transform: rotate(-15deg);
+        }
+        
+        .top-right {
+            top: -50px;
+            right: -40px;
+            transform: rotate(15deg);
+        }
+        
+        .bottom-left {
+            bottom: -50px;
+            left: -40px;
+            transform: rotate(-25deg);
+        }
+        
+        .bottom-right {
+            bottom: -50px;
+            right: -40px;
+            transform: rotate(25deg);
+        }
+        
+        h2 {
+            color: #8B008B;
+            border-bottom: 3px dotted #FF69B4;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 32px;
+            text-align: center;
+        }
+        
+        .message {
+            font-size: 20px;
+            line-height: 2;
+            color: #4B0082;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .message::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #FF69B4, transparent);
+            transform: translateX(-50%);
+        }
+        
+        .kuromi-divider {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .kuromi-divider img {
+            width: 40px;
+            margin: 0 10px;
+            opacity: 0.7;
+        }
+        
+        .gift-button {
+            background: linear-gradient(to right, #FF69B4, #DA70D6);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 22px;
+            font-family: 'Ma Shan Zheng', cursive;
+            cursor: pointer;
+            transition: all 0.4s;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 7px 20px rgba(255, 105, 180, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gift-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+        }
+        
+        .gift-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.6);
+        }
+        
+        .gift-button:hover::before {
+            left: 100%;
+        }
+        
+        .gift-images {
+            display: none;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+            animation: bounceIn 1s;
+        }
+        
+        @keyframes bounceIn {
+            0% {transform: scale(0.3); opacity: 0;}
+            50% {transform: scale(1.1);}
+            70% {transform: scale(0.9);}
+            100% {transform: scale(1); opacity: 1;}
+        }
+        
+        .gift-images img {
+            width: 200px;
+            filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.3));
+            transition: all 0.3s;
+            border-radius: 20px;
+            border: 5px solid white;
+        }
+        
+        .gift-images img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            color: #FF69B4;
+            animation: heartFall linear forwards;
+            z-index: -1;
+        }
+        
+        @keyframes heartFall {
+            0% {
+                transform: translateY(-100vh) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .sakura {
+            position: fixed;
+            font-size: 20px;
+            color: #FFB6C1;
+            animation: sakuraFall linear forwards;
+            z-index: -1;
+        }
+        
+        @keyframes sakuraFall {
+            0% {
+                transform: translateY(-100vh) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(-100px) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+        
+        .hidden-message {
+            display: none;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 24px;
+            color: #8B008B;
+            animation: fadeInUp 1s;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .kuromi-emoji {
+            display: inline-block;
+            animation: wiggle 2s infinite;
+            margin: 0 5px;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% {transform: rotate(0);}
+            25% {transform: rotate(10deg);}
+            75% {transform: rotate(-10deg);}
+        }
+        
+        .floating-kuromi {
+            position: fixed;
+            width: 80px;
+            animation: floatAround 15s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes floatAround {
+            0% {
+                top: 10%;
+                left: 10%;
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                top: 20%;
+                left: 80%;
+                transform: rotate(90deg) scale(0.8);
+            }
+            50% {
+                top: 80%;
+                left: 80%;
+                transform: rotate(180deg) scale(1.2);
+            }
+            75% {
+                top: 70%;
+                left: 10%;
+                transform: rotate(270deg) scale(0.9);
+            }
+            100% {
+                top: 10%;
+                left: 10%;
+                transform: rotate(360deg) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="kuromi-header">
+        <img src="https://img1.baidu.com/it/u=2186326215,2452517999&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501" class="kuromi-logo" alt="库洛米">
+        <h1>🌸 春分的道歉之礼 🌸</h1>
+    </div>
+    
+    <!-- 浮动的库洛米装饰 -->
+    <img src="https://img0.baidu.com/it/u=1570667473,3115989758&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" class="floating-kuromi" style="animation-delay: 0s;" alt="库洛米">
+    <img src="https://img2.baidu.com/it/u=506233430,1882754575&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500" class="floating-kuromi" style="animation-delay: 5s;" alt="库洛米">
+
+    <div class="container">
+        <img src="https://img1.baidu.com/it/u=2186326215,2452517999&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501" class="kuromi-corner top-left" alt="库洛米">
+        <img src="https://img2.baidu.com/it/u=2360465713,4234074784&fm=253&fmt=auto&app=120&f=JPEG?w=535&h=500" class="kuromi-corner top-right" alt="库洛米">
+        <img src="https://img0.baidu.com/it/u=1570667473,3115989758&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" class="kuromi-corner bottom-left" alt="库洛米">
+        <img src="https://img2.baidu.com/it/u=506233430,1882754575&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500" class="kuromi-corner bottom-right" alt="库洛米">
+        
+        <h2>💜 亲爱的，我爱你 💜</h2>
+        
+        <div class="message">
+            花开枝头，你在心头<br>
+            人间正好，一半春光<br>
+            一半是你<br>
+            我不爱春光，我只爱你<br>
+        </div>
+        
+        <div class="kuromi-divider">
+            <img src="https://img1.baidu.com/it/u=2186326215,2452517999&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501" alt="库洛米">
+            <img src="https://img2.baidu.com/it/u=2360465713,4234074784&fm=253&fmt=auto&app=120&f=JPEG?w=535&h=500" alt="库洛米">
+            <img src="https://img0.baidu.com/it/u=1570667473,3115989758&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="库洛米">
+        </div>
+
+        <button class="gift-button" onclick="showGift()">点击接受我的歉意</button>
+
+        <div class="gift-images" id="gift">
+            <img src="https://img1.baidu.com/it/u=880706925,1627040082&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500" alt="草莓蛋糕">
+            <img src="https://img1.baidu.com/it/u=2374696437,2378039038&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=1083" alt="奶茶">
+        </div>
+        
+        <div class="hidden-message" id="hidden-message">
+            我的世界因你而转，<br>
+            每一天有你的存在都变得更加美好<br>
+            <span class="kuromi-emoji">💜</span>爱你<span class="kuromi-emoji">💜</span>
+        </div>
+    </div>
+
+    <script>
+        // 创建飘落的心形和樱花
+        function createFallingElements() {
+            setInterval(() => {
+                createHeart();
+                createSakura();
+            }, 300);
+        }
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💕';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 6 + 3 + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.innerHTML = '🌸';
+            sakura.classList.add('sakura');
+            sakura.style.left = Math.random() * 100 + 'vw';
+            sakura.style.animationDuration = Math.random() * 6 + 3 + 's';
+            document.body.appendChild(sakura);
+            
+            setTimeout(() => {
+                sakura.remove();
+            }, 8000);
+        }
+        
+        // 显示礼物和隐藏消息
+        function showGift() {
+            // 显示礼物图像
+            document.getElementById('gift').style.display = 'flex';
+            // 隐藏按钮
+            document.querySelector('.gift-button').style.display = 'none';
+            // 显示隐藏消息
+            setTimeout(() => {
+                document.getElementById('hidden-message').style.display = 'block';
+            }, 1000);
+            
+            // 添加库洛米庆祝效果
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const kuromi = document.createElement('div');
+                    kuromi.innerHTML = '💜';
+                    kuromi.style.position = 'fixed';
+                    kuromi.style.fontSize = '30px';
+                    kuromi.style.left = Math.random() * 100 + 'vw';
+                    kuromi.style.top = Math.random() * 100 + 'vh';
+                    kuromi.style.opacity = '0';
+                    kuromi.style.animation = 'fadeIn 0.5s forwards, fadeOut 0.5s 2s forwards';
+                    
+                    document.body.appendChild(kuromi);
+                    
+                    setTimeout(() => {
+                        kuromi.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+        
+        // 页面加载时启动飘落效果
+        window.onload = function() {
+            createFallingElements();
+        };
+        
+        // 自定义动画
+        document.head.insertAdjacentHTML('beforeend', `
+            <style>
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: scale(0.5); }
+                    to { opacity: 1; transform: scale(1); }
+                }
+                
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+            </style>
+        `);
+    </script>
+</body>
+</html>
